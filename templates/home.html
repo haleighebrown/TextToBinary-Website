@@ -1,0 +1,19 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+   {% for post in object_list %}
+
+       <div class="Translator-entery">
+
+           <h2><a href="{% url 'Translation_detail' Translator.pk %}">{{ Translation.title }}</a></h2>
+
+           <p>{{ Translation.body }}</p>
+
+       </div>
+
+   {% endfor %}
+
+{% endblock content %}

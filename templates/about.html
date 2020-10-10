@@ -1,0 +1,35 @@
+<!-- templates/about.html -->
+
+{% extends 'base.html' %}
+
+
+{% block title %}About Page{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="jumbotron">
+
+    <h1 class="display-4">BT Translator is a Web application built through Django. It’s purpose is to allow users to translate messages from binary to text and vise versa. It allows users to save their translations and come back to edit them later, all while keeping their entries well protected!
+</h1>
+
+    
+        
+
+	{% if user.is_authenticated %}
+                <a class="btn btn-primary btn-lg" href="{% url 'Translation_list' %}">Translations</a>
+      
+		<p><a href="{% url 'logout' %}">Log out</a></p>
+	
+	{% else %}
+		<a href="{% url 'login' %}">Log In</a>
+
+	{% endif %}
+
+
+    </p>
+
+</div>
+
+{% endblock content %}
