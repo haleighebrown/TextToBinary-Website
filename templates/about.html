@@ -23,8 +23,9 @@
 		<p><a href="{% url 'logout' %}">Log out</a></p>
 	
 	{% else %}
-		<a href="{% url 'login' %}">Log In</a>
+		<a class="btn btn-primary btn-lg" href="{% url 'login' %}"
 
+        	role="button">Log In</a>
 	{% endif %}
 
 

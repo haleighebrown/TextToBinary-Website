@@ -15,6 +15,11 @@
 
     <p class="lead">A translating website built with Django!</p>
 
+	<a class="btn btn-primary btn-lg" href="{% url 'about' %}"
+
+        role="button">About</a>
+
+
 	{% if user.is_authenticated %}
 
         <a class="btn btn-primary btn-lg" href="{% url 'translation_list' %}"
