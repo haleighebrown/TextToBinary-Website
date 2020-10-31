@@ -1,0 +1,14 @@
+<!-- templates/translation_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="translation-entry">
+		<h2>{{ translation.title }}</h2>
+		<p>{{ translation.body }}</p>
+	</div>
+	
+	<p><a href="{% url 'translation_edit' post.pk %}">+ Edit Blog Translation</a></p>
+	<p><a href="{% url 'translation_delete' post.pk %}">+ Delete Translation</a></p>
+	
+{% endblock content%}
