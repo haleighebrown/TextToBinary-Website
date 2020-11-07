@@ -1,0 +1,59 @@
+<!-- templates/translation_list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Translations{% endblock title %}
+
+
+{% block content %}
+
+<a href="{% url 'translation_new' %}">Create Translation</a>
+
+    {% for translation in object_list %}
+
+
+	
+	{% if request.user.pk == translation.author.pk %}
+
+        <div class="card">
+
+            <div class="card-header">
+
+                 <span class="front-weight-bold">{{ translation.title }}</span> * 
+
+                 <span class="text-muted">by {{ translation.author }} |
+
+                 {{ translation.date }}</span>
+
+            </div>
+
+            <div class="card-body">
+
+                {{ translation.body }}
+
+            </div>
+
+            <div class="card-footer text-center text-muted">
+
+                 <a href="{% url 'translation_edit' translation.pk %}">Edit</a> |
+
+                 <a href="{% url 'translation_delete' translation.pk %}">Delete</a> | 
+
+		 <a href="{% url 'translation_detail' translation.pk %}">Details</a>
+
+            </div>
+
+        </div>
+
+
+	{% endif %}
+
+        <br />
+
+
+    
+    {% endfor %}
+
+{% endblock content %}
+
+        

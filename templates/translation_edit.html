@@ -4,11 +4,14 @@
 
 {% block content %}
 
-	<h1>Edit translation</h1>
-	<form action="" method="translation">{% csrf_token %}
-	
-		{{form.as_p }}
-	
-	<input type="submit" value="Update">
-  </form>
- {% endblock content %}
+    <h1>Edit</h1>
+
+    <form action="" method="post">{% csrf_token %}
+
+        {{ form.as_p }}
+
+      <button class="btn btn-info ml-2" type="submit">Update</button>
+
+</form>
+
+{% endblock content %}
