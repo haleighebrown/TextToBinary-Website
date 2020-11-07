@@ -23,13 +23,15 @@
 
                  <span class="text-muted">by {{ translation.author }} |
 
+		 {{ translation.choice }} |
+
                  {{ translation.date }}</span>
 
             </div>
 
             <div class="card-body">
 
-                {{ translation.body }}
+                {{ translation.Input }} 
 
             </div>
 
@@ -39,7 +41,7 @@
 
                  <a href="{% url 'translation_delete' translation.pk %}">Delete</a> | 
 
-		 <a href="{% url 'translation_detail' translation.pk %}">Details</a>
+		 <a href="{% url 'translation_detail' translation.pk %}">Veiw Translation</a>
 
             </div>
 

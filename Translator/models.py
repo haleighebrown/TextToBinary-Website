@@ -2,13 +2,15 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-from django.contrib.auth.models import User
+
 
 class Translation(models.Model):
     title = models.CharField(max_length=255)
-    body = models.TextField()
+    Input = models.TextField()
+    CHOICES = ('Text to Binary', 'Text to Binary'), ('Binary to Text', 'Binary to Text')
+    choice = models.CharField(max_length=155, choices=CHOICES, default='-----------')
     date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.PROTECT,)
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,)
 
     def __str__(self):
         return self.title
