@@ -1,7 +1,13 @@
 <!-- templates/translation_detail.html -->
 
 {% extends 'base.html' %}
-
+{% block css %}
+{% load static %}
+<style>
+#link { color: #4CAF50; } 
+</style>
+{% endblock %}
+	
 {% block content %}
 
 	<div class="translation-entry">
@@ -10,14 +16,15 @@
 
 		<p>by {{object.author }} | {{ object.date }} | {{ object.choice }}</p>
 
-		<p>{{ translation.Input }} | </p>
+		<p>{{ translation.Input }} | {{ translation.Output }} </p>
 
 	</div>
 	
-	<p><a href="{% url 'translation_edit' translation.pk %}">+ Edit Translation</a> |
-            
-		<a href="{% url 'translation_delete' translation.pk %}">+ Delete Translation</a></p>
 	
-	<p>Back to <a href="{% url 'translation_list' %}">All Translations</a>.</p>	
+	<p><a id="link" href="{% url 'translation_edit' translation.pk %}">+ Edit Translation</a> |
+            
+		<a id="link" href="{% url 'translation_delete' translation.pk %}">+ Delete Translation</a></p>
+	
+	<p>Back to <a id="link" href="{% url 'translation_list' %}">All Translations</a>.</p>	
 
 {% endblock content%}

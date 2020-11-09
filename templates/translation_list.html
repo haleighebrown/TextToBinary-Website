@@ -1,18 +1,94 @@
 <!-- templates/translation_list.html -->
 
 {% extends 'base.html' %}
+{% block css %}
+{% load static %}
+<style>
+      button {
 
+        display: inline-block;
+        background-color: #4CAF50;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 28px;
+        padding: 0;
+        width: 220px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 0;
+      }
+a {
+    text-decoration:none;
+    font-family:Arial;
+    display: block;
+}
+
+      button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      button:hover {
+        background-color: #555555;
+      }
+      button:hover span {
+        padding-right: 25px;
+      }
+      button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+
+      #link { color: #FFFFFF; } 
+	
+
+    	 ul.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  	.nav li {
+    	width: 200px;
+   	height: 50px;
+   	list-style-type: none;
+    	line-height: 50px;
+    	display: block;
+  	}
+
+  	.nav a {
+	width: 176px;
+   
+    	display: block;
+    	border: 2px solid #4CAF50;
+  	}
+	
+    </style>
+{% endblock %}
 {% block title %}Translations{% endblock title %}
 
 
 {% block content %}
 
-<a href="{% url 'translation_new' %}">Create Translation</a>
+<ul class="nav">
+        <button><span><a id="link" href="{% url 'translation_new' %}"
 
-    {% for translation in object_list %}
+        >Create Translation</a></span></button>
+</ul>
 
+	{% for translation in object_list %}
 
-	
 	{% if request.user.pk == translation.author.pk %}
 
         <div class="card">
@@ -31,17 +107,19 @@
 
             <div class="card-body">
 
-                {{ translation.Input }} 
+                {{ translation.Input }} | {{ translation.Output }}
 
             </div>
 
             <div class="card-footer text-center text-muted">
 
-                 <a href="{% url 'translation_edit' translation.pk %}">Edit</a> |
+		<ul class="nav">
+        	<button><span><a id="link" href="{% url 'translation_edit' translation.pk %}">Edit</a></span></button>
 
-                 <a href="{% url 'translation_delete' translation.pk %}">Delete</a> | 
+        	<button><span><a id="link" href="{% url 'translation_delete' translation.pk %}">Delete</a></span></button>
 
-		 <a href="{% url 'translation_detail' translation.pk %}">Veiw Translation</a>
+		<button><span><a id="link" href="{% url 'translation_detail' translation.pk %}">View Translation</a></span></button>
+		</ul>
 
             </div>
 

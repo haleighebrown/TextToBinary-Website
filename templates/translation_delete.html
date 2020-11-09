@@ -9,8 +9,10 @@
 	<form action="" method="post">{% csrf_token %}
 
 		<p>Are you sure you want to delete "{{ translation.title }}"?</p>
-
+		<button class= "btn btn-danger ml-2" name="cancel" value="cancel" type="cancel">No</button>
+		
 		<button class= "btn btn-danger ml-2" type="submit">Confirm</button>
+		
 
 	</form>
 

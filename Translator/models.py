@@ -7,6 +7,7 @@ from django.urls import reverse
 class Translation(models.Model):
     title = models.CharField(max_length=255)
     Input = models.TextField()
+    Output = models.TextField()
     CHOICES = ('Text to Binary', 'Text to Binary'), ('Binary to Text', 'Binary to Text')
     choice = models.CharField(max_length=155, choices=CHOICES, default='-----------')
     date = models.DateTimeField(auto_now_add=True)

@@ -2,6 +2,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+
+{% load static %}
+{% block css %}{% endblock %}
+
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,
@@ -14,6 +19,9 @@
     crossorigin="anonymous">
     <title>{% block title %}TB-Translator App{% endblock title %}</title>
   </head>
+
+
+
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <a class="navbar-brand" href="{% url 'home' %}">TB-Translator</a>

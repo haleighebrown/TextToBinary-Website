@@ -2,30 +2,111 @@
 
 {% extends 'base.html' %}
 
+<html>
+<head>
+{% block css %}
+{% load static %}
+<style>
+      button {
+
+        display: inline-block;
+        background-color: #4CAF50;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 28px;
+        padding: 0;
+        width: 220px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 0;
+      }
+a {
+    text-decoration:none;
+    font-family:Arial;
+    display: block;
+}
+
+      button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      button:hover {
+        background-color: #555555;
+      }
+      button:hover span {
+        padding-right: 25px;
+      }
+      button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+
+      #link { color: #FFFFFF; } 
+	
+
+    	 ul.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  	.nav li {
+    	width: 200px;
+   	height: 50px;
+   	list-style-type: none;
+    	line-height: 50px;
+    	display: block;
+  	}
+
+  	.nav a {
+	width: 176px;
+   
+    	display: block;
+    	border: 2px solid #4CAF50;
+  	}
+	
+    </style>
+{% endblock %}
+
 
 {% block title %}Home{% endblock title %}
-
 
 
 {% block content %}
 
 <div class="jumbotron">
 
-    <h1 class="display-4">TB-Translator</h1>
+	<img src="https://image.freepik.com/free-vector/matrix-style-binary-code-digital-background-with-falling-numbers_1017-25336.jpg" alt="add_alttext"
+	width="800" height="350">
 
-    <p class="lead">A translating website built with Django!</p>
+<h1 class="display-4">TB-Translator</h1>
 
+   <p class="lead"><em>A translating website built with Django!</em></p>
+	
 	{% if user.is_authenticated %}
+<ul class="nav">
+        <button><span><a id="link" href="{% url 'translation_list' %}"
 
-        <a class="btn btn-primary btn-lg" href="{% url 'translation_list' %}"
-
-        role="button">View Translations</a>
-
+        >View Translations</a></span></button>
+</ul>
 {% endif %}
+<ul class="nav">
+	<button><span><a id="link" href="{% url 'about' %}"
 
-	<a class="btn btn-primary btn-lg" href="{% url 'about' %}"
-
-        role="button">About</a>
+        >About</a></span></button>
+</ul>
 
     </p>
 

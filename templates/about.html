@@ -1,7 +1,81 @@
 <!-- templates/about.html -->
 
 {% extends 'base.html' %}
+{% block css %}
+{% load static %}
+<style>
+      button {
 
+        display: inline-block;
+        background-color: #4CAF50;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 28px;
+        padding: 0;
+        width: 220px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 0;
+      }
+a {
+    text-decoration:none;
+    font-family:Arial;
+    display: block;
+}
+
+      button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      button:hover {
+        background-color: #555555;
+      }
+      button:hover span {
+        padding-right: 25px;
+      }
+      button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+
+      #link { color: #FFFFFF; } 
+	
+
+    	 ul.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  	.nav li {
+    	width: 200px;
+   	height: 50px;
+   	list-style-type: none;
+    	line-height: 50px;
+    	display: block;
+  	}
+
+  	.nav a {
+	width: 176px;
+   
+    	display: block;
+    	border: 2px solid #4CAF50;
+  	}
+	
+    </style>
+{% endblock %}
 
 {% block title %}About Page{% endblock title %}
 
@@ -9,23 +83,39 @@
 
 {% block content %}
 
+<img src="https://thecollegepost.com/wp-content/uploads/2018/11/mainsnow.jpg" alt="school"
+	width="900" height="585">
+<div class="text-block">
+    <h4>This app was created by</h4>
+    <p>Universtiy of Montana Student Haleigh Brown</p>
+    <p><small><em> Photo Credit: The College Post</em></small></p>
+
 <div class="jumbotron">
 
-    <h1 class="display-4">BT Translator is a Web application built through Django. It’s purpose is to allow users to translate messages from binary to text and vise versa. It allows users to save their translations and come back to edit them later, all while keeping their entries well protected!
-</h1>
+    <h1 class="display-6"><small>BT Translator is a web application built through Django. It’s purpose is to allow users to translate messages from binary to text and vise versa. It allows users to save their translations and come back to edit them later, all while keeping their entries well protected!
 
-    
-        
+</small></h1>
 
 	{% if user.is_authenticated %}
-                <a class="btn btn-primary btn-lg" href="{% url 'translation_list' %}">Translations</a>
-      
-		<p><a href="{% url 'logout' %}">Log out</a></p>
+
+<ul class="nav">
+        <button><span><a id="link" href="{% url 'translation_list' %}"
+
+        >View Translations</a></span></button>
+</ul>
+<ul class="nav">
+        <button><span><a id="link" href="{% url 'logout' %}"
+
+        >Log out</a></span></button>
+</ul>	
+	
 	
 	{% else %}
-		<a class="btn btn-primary btn-lg" href="{% url 'login' %}"
+		<ul class="nav">
+        <button><span><a id="link" href="{% url 'login' %}"
 
-        	role="button">Log In</a>
+        >Login</a></span></button>
+</ul>
 	{% endif %}
 
 
