@@ -43,13 +43,7 @@ class TranslationUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
                 if self.request.POST['Input'][i] != '0' and self.request.POST['Input'][i] != '1' and self.request.POST['Input'][i] != ' ':
                     binary = False
                     
-            spaced = True
-            if len(self.request.POST['Input']) >= 16:
-                for i in range(7, len(self.request.POST['Input']), 8):
-                    if self.request.POST['Input'][i] != ' ':
-                        spaced = False
-                        
-            if (self.request.POST['Input'].replace(" ","")).isdigit() and binary == True and spaced == True and len(self.request.POST['Input']) >= 8:
+            if (self.request.POST['Input'].replace(" ","")).isdigit() and binary == True:
                 form.instance.Output = decode_binary_string(self.request.POST['Input'])
             else:
                 form.instance.Output =  "Please input proper Binary with correct spacing for translation into Text"
@@ -91,15 +85,12 @@ class TranslationCreateView(LoginRequiredMixin, CreateView):
             for i in range (len(self.request.POST['Input'])):
                 if self.request.POST['Input'][i] != '0' and self.request.POST['Input'][i] != '1' and self.request.POST['Input'][i] != ' ':
                     binary = False
-            spaced = True
-            if len(self.request.POST['Input']) >= 16:
-                for i in range(7, len(self.request.POST['Input']), 8):
-                    if self.request.POST['Input'][i] != ' ':
-                        spaced = False
-            if (self.request.POST['Input'].replace(" ","")).isdigit() and binary == True and spaced == True and len(self.request.POST['Input']) >= 8:
+
+            if (self.request.POST['Input'].replace(" ","")).isdigit() and binary == True:
                 form.instance.Output = decode_binary_string(self.request.POST['Input'])
             else:
                 form.instance.Output =  "Please input proper Binary with correct spacing for translation into Text"
         return super().form_valid(form)
+
 
     

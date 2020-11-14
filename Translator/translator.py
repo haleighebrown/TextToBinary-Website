@@ -9,3 +9,4 @@ def decode_binary_string(s):
 
 
 
+print(decode_binary_string(encode_binary_string("2387618724thbkwbfek!@#%@$#^ ^%#")))
