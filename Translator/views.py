@@ -91,7 +91,7 @@ class TranslationCreateView(LoginRequiredMixin, CreateView):
                 form.instance.Output = decode_binary_string(self.request.POST['Input'])
             else:
                 form.instance.Output =  "Please input proper Binary with correct spacing for translation into Text"
-        return super().form_valid(form), HttpResponseRedirect()
+        return super().form_valid(form)
 
 
     
