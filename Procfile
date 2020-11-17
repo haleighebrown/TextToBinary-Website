@@ -1,1 +1,1 @@
-web: gunicorn TB_Translator_project.wsgi --log-file - 
+web: gunicorn TB_Translator_project.wsgi --log-file -
