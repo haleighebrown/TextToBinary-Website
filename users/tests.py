@@ -22,3 +22,4 @@ class test_Sign_Up_View(TestCase):
         response = self.client.get(reverse('signup'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'signup.html')
+    
