@@ -4,7 +4,7 @@
 *  By: Haleigh Brown                                                 *
 *                                                                    *
 **********************************************************************
-
+HEROKU LINK: https://tb-translator.herokuapp.com/
 
 	This application is a Translator app that allows users to convert from normal text
 to binary and vice versa. It focuses on providing an aesthetically pleasing way for 
